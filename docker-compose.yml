@@ -1,0 +1,47 @@
+services:
+
+  timescaledb:
+    image: timescale/timescaledb:latest-pg14
+    environment:
+      POSTGRES_USER: kavach
+      POSTGRES_PASSWORD: kavach2026
+      POSTGRES_DB: kavach_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - timescale_data:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://kavach:kavach2026@timescaledb:5432/kavach_db
+      MLFLOW_TRACKING_URI: sqlite:////app/mlflow/mlflow.db
+    depends_on:
+      - timescaledb
+    volumes:
+      - ./mlflow:/app/mlflow
+      - ./backend:/app
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+
+  mlflow:
+    image: python:3.10-slim
+    command: >
+      sh -c "pip install mlflow && 
+             mlflow server 
+             --backend-store-uri sqlite:///mlflow/mlflow.db 
+             --host 0.0.0.0 --port 5000"
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./mlflow:/mlflow
+
+volumes:
+  timescale_data:
