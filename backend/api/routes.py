@@ -2,6 +2,7 @@
 API endpoints for serving KAVACH forecasting metrics and managing storm replay.
 """
 
+from typing import List
 from fastapi import APIRouter, Depends, HTTPException, BackgroundTasks
 from sqlalchemy.orm import Session
 from sqlalchemy import text
