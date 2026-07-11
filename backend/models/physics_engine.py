@@ -115,7 +115,7 @@ class PhysicsEngine:
             t_span,
             f_init,
             args=(Kp, Pdyn, f_inner, f_outer),
-            method='RK45',
+            method='BDF',
             t_eval=[t_span[1]]
         )
         
