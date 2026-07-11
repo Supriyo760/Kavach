@@ -93,8 +93,8 @@ class PhysicsEngine:
         """
         # Formulate boundaries in PSD (which scales with flux)
         f_inner = 10 ** 2.2  # Quiet conditions inner boundary
-        f_outer = 10 ** (LOG_FLUX_MIN + (LOG_FLUX_MAX - LOG_FLUX_MIN) * (coupling_fn / 2500.0))
-        f_outer = np.clip(f_outer, 10**LOG_FLUX_MIN, 10**LOG_FLUX_MAX)
+        f_outer = 10 ** (config.LOG_FLUX_MIN + (config.LOG_FLUX_MAX - config.LOG_FLUX_MIN) * (coupling_fn / 2500.0))
+        f_outer = np.clip(f_outer, 10**config.LOG_FLUX_MIN, 10**config.LOG_FLUX_MAX)
         
         # Initial condition: flat interpolation between boundaries initialized with current GEO flux
         f_init = np.zeros(config.L_POINTS)
@@ -125,7 +125,7 @@ class PhysicsEngine:
         f_geo = np.interp(config.L_GEO, self.L_grid, f_final)
         
         # Convert back to log flux
-        log_flux_geo = np.log10(np.clip(f_geo, 1.0, 10**LOG_FLUX_MAX))
+        log_flux_geo = np.log10(np.clip(f_geo, 1.0, 10**config.LOG_FLUX_MAX))
         return float(log_flux_geo)
 
     def predict(self, feature_window_df):
