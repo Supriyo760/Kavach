@@ -120,7 +120,7 @@ def build_feature_matrix(df):
     
     # Ensure log flux exists
     if 'log_flux' not in df.columns:
-        from cleaner import log_transform
+        from data.cleaner import log_transform
         df['log_flux'] = log_transform(df['flux'])
     
     # Physics features
