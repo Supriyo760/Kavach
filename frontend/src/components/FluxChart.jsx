@@ -35,12 +35,12 @@ const FluxChart = ({ data }) => {
     <div className="chart-card">
       <div className="chart-header">
         <h3 className="chart-title">
-          🛡️ INTERACTIVE ELECTRON FLUX TELEMETRY (>2 MeV)
+          🛡️ INTERACTIVE ELECTRON FLUX TELEMETRY (&gt;2 MeV)
         </h3>
         <div className="chart-legend">
           <div className="legend-item">
             <span className="legend-dot" style={{ backgroundColor: '#3b82f6' }}></span>
-            <span>Flux (>2 MeV)</span>
+            <span>Flux (&gt;2 MeV)</span>
           </div>
           <div className="legend-item">
             <span className="legend-dot" style={{ backgroundColor: 'var(--color-warning)' }}></span>

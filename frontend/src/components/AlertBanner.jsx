@@ -12,7 +12,7 @@ const AlertBanner = ({ chargingRiskActive, regime }) => {
           <div>
             <strong>CRITICAL ERROR: DEEP DIELECTRIC CHARGING HAZARD DETECTED</strong>
             <p style={{ fontSize: '13px', marginTop: '2px', opacity: 0.9 }}>
-              GEO >2 MeV electron flux is projected to exceed the critical charging threshold of 10,000 pfu. Operational precaution advised for satellite subsystem gates.
+              GEO &gt;2 MeV electron flux is projected to exceed the critical charging threshold of 10,000 pfu. Operational precaution advised for satellite subsystem gates.
             </p>
           </div>
         </div>
